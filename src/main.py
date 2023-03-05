@@ -5,19 +5,20 @@ import time
 
 
 # create a mongodb handler class and connect to localhost
-
 DbHandler = DbHandler()
 
-DbHandler.StartTask("test", "test")
-DbHandler.StartTask("test2", "test2")
 
-tasks = DbHandler.GetRunningTasks()
+if __name__ == "__main__":
+    print('start')
 
-time.sleep(5)
+    # for adding a new task to the database
+    t1 = Task("task1", "category1")
+    DbHandler.StartTask(t1)
 
-DbHandler.StopTask("test")
+    print("current tasks")
 
-tasks = DbHandler.GetRunningTasks()
-
-# for getting all tasks
+    # print the entire tasks collection
+    for t in DbHandler.collection.find():
+        print(t)
+    
 

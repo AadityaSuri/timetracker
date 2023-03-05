@@ -7,9 +7,8 @@ class Task:
         self.start = None
         self.end = None
 
-    # def start_task(self):
-    #     self.start = datetime.now()
-    #     self.is_running = True
+    def start_task(self):
+        self.start = datetime.datetime.now()
 
     # def stop_task(self):
     #     self.end = datetime.now()

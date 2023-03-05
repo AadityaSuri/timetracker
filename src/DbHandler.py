@@ -13,16 +13,17 @@ class DbHandler:
         self.collection = self.db["tasks"]
         
     # for adding a new task to the database
-    def StartTask(self, name, category):
-        self.collection.insert_one({"name": name, "category": category, "start": datetime.datetime.now(), "end": None})
+    def StartTask(self, t):
+        t.start_task()
+        self.collection.insert_one(t.__dict__)
 
-    # for stopping a task
-    def StopTask(self, name):
-        self.collection.update_one({"name": name}, {"$set": {"end": datetime.datetime.now()}})
+    # # for stopping a task
+    # def StopTask(self, name):
+    #     self.collection.update_one({"name": name}, {"$set": {"end": datetime.datetime.now()}})
 
-    # for getting all tasks
-    def GetRunningTasks(self):
-        return self.collection.find({"end": None})
+    # # for getting all tasks
+    # def GetRunningTasks(self):
+    #     return self.collection.find({"end": None})
     
 
     
